@@ -16,7 +16,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
-@Disabled
 @SpringBootTest
 class TopicListenerSpyTest {
 
@@ -28,8 +27,8 @@ class TopicListenerSpyTest {
 
     @Test
     void consume() {
-        doReturn(Collections.emptyList()).when(personService.findAll());
-        doReturn(new PersonDTO(54L, "Masha", 2015)).when(personService.save(any()));
+        doReturn(Collections.emptyList()).when(personService).findAll();
+        doReturn(new PersonDTO(54L, "Masha", 2015)).when(personService).save(any());
 
         List<PersonDTO> persons = personService.findAll();
         assertEquals(0L,persons.size());
