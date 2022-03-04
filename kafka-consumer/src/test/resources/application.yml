@@ -1,0 +1,42 @@
+server:
+  port: 8090
+
+spring:
+  # Consumer properties
+  kafka:
+    producer:
+      bootstrap-servers: 127.0.0.1:9092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      group-id: group_id
+    consumer:
+      bootstrap-servers: 127.0.0.1:9092
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      group-id: group_id
+      properties:
+        spring:
+          json:
+            trusted:
+              packages: "*"
+
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driverClassName: org.h2.Driver
+    username: sa
+    password:
+    initialization-mode: never
+    continue-on-error: false
+  jpa:
+    show-sql: true
+    generate-ddl: false
+  h2:
+    console:
+      enabled: true
+
+# User's variables
+topic:
+  name:
+    producer: topic.comand.test
+

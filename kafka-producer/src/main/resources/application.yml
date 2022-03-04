@@ -1,0 +1,24 @@
+server:
+  port: 8080
+
+# Common Kafka Properties
+auto:
+  create:
+    topics:
+      enable: true
+
+spring:
+
+# Producer properties
+  kafka:
+    producer:
+      bootstrap-servers: 127.0.0.1:9092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      group-id: group_id
+
+# User's variables
+topic:
+  name:
+    producer: topic.comand.test
+
